@@ -1,0 +1,107 @@
+<html>
+    <head>
+
+        <style>
+            .imgStyle{
+                width: 160px;
+                height: 80px;
+                
+            }
+            .btnStyle{
+                width: 25px;
+                height: 25px;
+                border-radius:100% !important;
+                background-color: rgb(239, 248, 245);
+                border: none;
+                position: absolute;
+                right: 29%;
+                top: 28%;
+               
+            }
+            .btnStyle2{
+                width: 25px;
+                height: 25px;
+                border-radius:100% !important;
+                background-color: rgb(239, 248, 245);
+                border: none;
+                position: absolute;
+                left: 29%;
+                top: 28%;
+               
+            }
+        </style>
+    </head>
+
+    <body style="background-color: black;">
+        <center>
+  <h2 style="color: rgb(255, 238, 0); font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Slider with JQuery</h2>
+        <img src="cars\peride2.jpg" id="mainImage" alt="" >
+        <button id="btnRight" class="btnStyle">></button>
+        <button id="btnLeft" class="btnStyle2"><</button>
+        <hr>
+        <div id="divContainer">
+            
+            <img src="cars\benz.jpeg" alt="" class="imgStyle" id="image1">
+            <img src="cars\lambo.jpg" alt="" class="imgStyle" id="image2">
+            <img src="cars\bugatti.jpg" alt="" class="imgStyle" id="image3">
+            <img src="cars\car2.jpg" alt="" class="imgStyle" id="image4">
+         
+        </div>
+    </center>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var imageURLs=new Array();
+            var intervalid;
+            var btnRight=$('#btnRight');
+            var btnLeft=$('#btnLeft');
+            var img1=$('#image1')
+            $('#divContainer img').each(function(){
+                imageURLs.push($(this).attr('src'));
+            });
+          
+           btnRight.click(function(){
+            var mainImage=$('#mainImage');
+               var currentImageURL=mainImage.attr('src');
+               var currentImageIndex=$.inArray(currentImageURL,imageURLs);
+               
+                  // currentImageIndex+=1;
+               
+               mainImage.attr('src',imageURLs[currentImageIndex+1])
+            
+           });
+           btnLeft.click(function(){
+            var mainImage=$('#mainImage');
+               var currentImageURL=mainImage.attr('src');
+               var currentImageIndex=$.inArray(currentImageURL,imageURLs);
+               
+                  // currentImageIndex+=1;
+               
+               mainImage.attr('src',imageURLs[currentImageIndex-1])
+
+           });
+           $('#image1').on({
+    'click': function(){
+        $('#mainImage').attr('src','cars/benz.jpeg');
+    }
+});
+
+$('#image2').on({
+    'click': function(){
+        $('#mainImage').attr('src','cars/lambo.jpg');
+    }
+});
+$('#image3').on({
+    'click': function(){
+        $('#mainImage').attr('src','cars/bugatti.jpg');
+    }
+});
+$('#image4').on({
+    'click': function(){
+        $('#mainImage').attr('src','cars/car2.jpg');
+    }
+});
+        });
+    </script>
+    </body>
+</html>
